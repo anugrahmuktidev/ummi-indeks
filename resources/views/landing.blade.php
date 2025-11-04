@@ -155,10 +155,10 @@
                     </div>
                     <!-- end row -->
 
-                    <div class="row">
+                    <div class="row align-items-stretch">
                         <!-- Kolom Kiri -->
-                        <div class="col-12 col-md-6 d-flex align-items-center mb-1 mb-md-0">
-                            <div class="card ribbon-box border shadow-none mb-lg-0 w-100">
+                        <div class="col-12 col-md-6 d-flex mb-1 mb-md-0">
+                            <div class="card ribbon-box border shadow-none mb-lg-0 w-100 h-100">
                                 <div class="card-body">
                                     <div class="ribbon ribbon-success round-shape fs-4 fw-medium">
                                         <i class="ri-account-pin-circle-line"></i> Pengembang :
@@ -177,9 +177,9 @@
                         </div>
 
                         <!-- Kolom Kanan -->
-                        <div class="col-12 col-md-6 d-flex align-items-center">
+                        <div class="col-12 col-md-6 d-flex">
                             @if (Route::has('login'))
-                                <div class="text-center w-100">
+                                <div class="text-center w-100 h-100 d-flex flex-column justify-content-center">
                                     @auth
                                         @if (Auth::user()->isAdmin())
                                             <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-lg w-100 fs-4 mb-4">
@@ -193,7 +193,7 @@
                                             <a href="{{ route('register') }}" class="btn btn-success btn-lg w-100 fs-4 mb-3"><i
                                                     class="ri-user-add-line me-2"></i>Daftar</a>
                                         @endif
-                                        <a href="{{ route('login') }}" class="btn btn-warning btn-lg w-100 fs-4 mb-3"><i
+                                        <a href="{{ route('login') }}" class="btn btn-warning btn-lg w-100 fs-4"><i
                                                 class="ri-login-box-line me-2"></i>Masuk</a>
 
                                     @endauth
