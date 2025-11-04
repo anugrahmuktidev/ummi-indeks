@@ -197,9 +197,10 @@
                                                 class="ri-login-box-line me-2"></i>Masuk</a>
 
                                     @endauth
-                                    <a href="{{ asset('petunjuk-penggunaan-kecapi.pdf') }}" target="_blank"
+                                    {{-- Tombol petunjuk penggunaan disembunyikan --}}
+                                    {{-- <a href="{{ asset('petunjuk-penggunaan-kecapi.pdf') }}" target="_blank"
                                         class="btn btn-primary btn-lg w-100 fs-4"><i
-                                            class="ri-question-answer-line me-2"></i>Petunjuk Penggunaan</a>
+                                            class="ri-question-answer-line me-2"></i>Petunjuk Penggunaan</a> --}}
                                 </div>
                             @endif
                         </div>
