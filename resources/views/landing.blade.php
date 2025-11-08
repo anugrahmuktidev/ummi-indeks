@@ -24,7 +24,7 @@
     <style>
         .nft-heros {
             position: relative;
-            background-image: url("{{ asset('assets/img/bgmain.png') }}");
+            background-image: url("{{ asset('assets/img/bgmainmain.png') }}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.40);
+            background-color: rgba(0, 0, 0, 0.20);
             z-index: 1;
         }
 

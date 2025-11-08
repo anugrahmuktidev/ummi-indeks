@@ -25,8 +25,8 @@
         body {
             margin: 0;
             padding: 0;
-            --vz-body-bg-image: url("{{ asset('assets/img/bgmain.png') }}");
-            background: url("{{ asset('assets/img/bgmain.png') }}") center / cover no-repeat fixed !important;
+            --vz-body-bg-image: url("{{ asset('assets/img/bgmainmain.png') }}");
+            background: url("{{ asset('assets/img/bgmainmain.png') }}") center / cover no-repeat fixed !important;
             min-height: 100vh;
             font-family: 'Arial Nero', sans-serif;
         }
@@ -43,7 +43,7 @@
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
-            background: url("{{ asset('assets/img/bgmain.png') }}") center / cover no-repeat fixed;
+            background: url("{{ asset('assets/img/bgmainmain.png') }}") center / cover no-repeat fixed;
         }
 
         .auth-page-wrapper::before {
@@ -51,7 +51,6 @@
             position: absolute;
             inset: 0;
             background: rgba(15, 23, 42, 0.2);
-            backdrop-filter: blur(1px);
             z-index: 0;
         }
 
