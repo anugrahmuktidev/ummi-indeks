@@ -17,7 +17,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url("{{ asset('assets/img/bgmain.png') }}");
+            background-image: url("{{ asset('assets/img/bgmainmain.png') }}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

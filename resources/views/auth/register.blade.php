@@ -80,9 +80,11 @@
                             <div class="mb-3">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" class="form-control">
-                                    <option value="Laki-laki" {{ old('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>
+                                    <option value="Laki-laki"
+                                        {{ old('jenis_kelamin', 'Perempuan') == 'Laki-laki' ? 'selected' : '' }}>
                                         Laki-laki</option>
-                                    <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>
+                                    <option value="Perempuan"
+                                        {{ old('jenis_kelamin', 'Perempuan') == 'Perempuan' ? 'selected' : '' }}>
                                         Perempuan</option>
                                 </select>
                                 @error('jenis_kelamin')

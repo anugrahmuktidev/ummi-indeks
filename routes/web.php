@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/measurement', MeasurementForm::class)->name('measurement.form');
     Route::get('/risk-assessment', RiskAssessmentForm::class)->name('risk.form');
     Route::get('/risk-assessment/result', \App\Livewire\RiskAssessmentResult::class)->name('risk.result');
+    Route::get('/tentang-aplikasi', fn () => view('user.about'))->name('user.about');
 
     Route::get('/video/{kembali?}', [PretestController::class, 'showVideo'])->name('show.video');
     Route::get('/leaflet/download/{leaflet}', [PretestController::class, 'downloadLeaflet'])->name('leaflet.download');

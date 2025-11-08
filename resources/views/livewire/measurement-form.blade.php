@@ -9,9 +9,9 @@
                 <div class="mt-4">
                     <div class="row g-3">
                         @foreach ([1, 2, 3] as $index)
-                            <div class="col-12 col-md-4">
+                            <div class="col-4">
                                 <div class="ratio ratio-4x3 rounded overflow-hidden shadow-sm border border-light-subtle">
-                                    <img src="{{ asset('assets/img/kek' . $index . '.jpg') }}" class="object-fit-cover w-100 h-100"
+                                    <img src="{{ asset('assets/img/kek' . $index . '.png') }}" class="object-fit-cover w-100 h-100"
                                         alt="Panduan LiLA {{ $index }}">
                                 </div>
                             </div>
@@ -42,6 +42,21 @@
                         @enderror
                     </div>
 
+                    @if ($showResult)
+                        <hr class="my-4">
+                        <div class="alert {{ $ratio >= 4.25 ? 'alert-success' : 'alert-danger' }}">
+                            <h5 class="fw-bold-text mb-2">Hasil Perhitungan</h5>
+                            <p class="mb-1">Nilai LILA / √PLA = <strong>{{ number_format($ratio ?? 0, 3) }}</strong></p>
+                            <p class="mb-3 fw-bold-text">{{ $riskMessage }}</p>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-success" wire:click="proceed">
+                                    <i class="ri-arrow-right-line me-1"></i>
+                                    Lanjut ke Penilaian Risiko KEK
+                                </button>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="d-flex justify-content-end gap-2">
                         @if ($canBypassToHome)
                             <button type="button" class="btn btn-outline-secondary" wire:click="backHome">
@@ -60,21 +75,6 @@
                         </button>
                     </div>
                 </form>
-
-                @if ($showResult)
-                    <hr class="my-4">
-                    <div class="alert {{ $ratio >= 4.25 ? 'alert-success' : 'alert-danger' }}">
-                        <h5 class="fw-bold-text mb-2">Hasil Perhitungan</h5>
-                        <p class="mb-1">Nilai LILA / √PLA = <strong>{{ number_format($ratio ?? 0, 3) }}</strong></p>
-                        <p class="mb-3 fw-bold-text">{{ $riskMessage }}</p>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-success" wire:click="proceed">
-                                <i class="ri-arrow-right-line me-1"></i>
-                                Lanjut ke Penilaian Risiko KEK
-                            </button>
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
     </div>
