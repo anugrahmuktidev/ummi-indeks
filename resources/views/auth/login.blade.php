@@ -3,7 +3,7 @@
 @section('content')
     <style>
         .login-card {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
             backdrop-filter: blur(8px);
