@@ -75,6 +75,10 @@
                             <li class="mb-2">Gunakan kalkulator bantu hitung dan lakukan skrining.</li>
                             <li>Tinjau riwayat penilaian untuk tindak lanjut intervensi gizi.</li>
                         </ol>
+                        <a href="{{ asset('petunjuk-penggunaan-prediksikek.pdf') }}" target="_blank" rel="noopener"
+                            class="btn btn-primary mt-3 material-shadow-none">
+                            <i class="ri-download-2-line me-2"></i>Unduh Panduan Penggunaan
+                        </a>
                     </div>
                 </div>
 
