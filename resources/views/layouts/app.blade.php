@@ -28,7 +28,7 @@
     @livewireStyles
     <style>
         body {
-            background-image: url("{{ asset('assets/img/bgmainmain.png') }}");
+            background-image: url("{{ asset('assets/img/bgmain-desktop.png') }}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -43,6 +43,12 @@
             background-color: rgba(255, 255, 255, 0.85);
             border-radius: 16px;
             backdrop-filter: blur(2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-image: url("{{ asset('assets/img/bgmain-mobile.png') }}");
+            }
         }
     </style>
 </head>

@@ -24,16 +24,17 @@
     <style>
         .nft-heros {
             position: relative;
-            background-image: url("{{ asset('assets/img/bgmainmain.png') }}");
+            background-image: url("{{ asset('assets/img/bgmain-desktop.png') }}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 60px 0;
             display: flex;
             align-items: center;
         }
 
-            .bg-overlay {
+        .bg-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -45,6 +46,7 @@
 
         @media (max-width: 768px) {
             .nft-heros {
+                background-image: url("{{ asset('assets/img/bgmain-mobile.png') }}");
                 height: auto;
                 padding: 20px;
             }
@@ -57,56 +59,126 @@
                 max-width: 100%;
                 height: auto;
             }
+
+            .heading-desktop {
+                display: none;
+            }
+
+            .heading-mobile {
+                display: block;
+            }
         }
 
         .logo-size {
             max-height: 80px;
-            /* Atur tinggi maksimum logo */
-            width: auto;
-            /* Memastikan lebar otomatis sesuai rasio */
-        }
-
-        .logo-size-large {
-            height: 110px;
-            /* Paksa tinggi lebih besar untuk logo yang lebar */
             width: auto;
         }
 
         .card-logo {
             background-color: white;
-            /* Card putih */
             border-radius: 40px;
-            /* Radius 20px */
             padding: 15px;
-            /* Padding untuk ruang di dalam card */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Sedikit bayangan untuk efek card */
-            max-width: 720px;
-            /* Batasi lebar maksimal card */
+            max-width: 820px;
             margin: 0 auto;
-            /* Buat card tetap di tengah */
             text-align: center;
-            /* Agar logo tetap sejajar di tengah */
         }
 
         .row-logo {
             display: flex;
-            /* Flexbox untuk mengatur baris */
-            justify-content: space-around;
-            /* Logo disebar rata secara horizontal */
-            flex-wrap: nowrap;
-            /* Jangan membiarkan logo turun ke baris baru */
-            gap: 10px;
-            /* Jarak antar logo */
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo-col {
             display: flex;
-            /* Flexbox di setiap kolom */
             justify-content: center;
-            /* Meratakan logo di tengah */
             align-items: center;
-            /* Meratakan logo secara vertikal */
+            flex: 1 1 150px;
+            max-width: 170px;
+        }
+
+        .hero-heading {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-heading h1,
+        .hero-heading h3 {
+            line-height: 1.4;
+        }
+
+        .hero-cta {
+            gap: 16px;
+        }
+
+        .hero-cta .btn {
+            white-space: normal;
+        }
+
+        .heading-desktop {
+            display: block;
+        }
+
+        @media (min-width: 992px) {
+            .row-logo {
+                justify-content: space-around;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .card-logo {
+                border-radius: 30px;
+                padding: 12px;
+            }
+
+            .logo-size {
+                max-height: 65px;
+            }
+
+            .hero-cta .btn {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .row-logo {
+                gap: 12px;
+            }
+
+            .logo-col {
+                flex: 1 1 45%;
+                max-width: 45%;
+            }
+
+            .logo-size {
+                max-height: 50px;
+            }
+
+            .card-logo {
+                border-radius: 24px;
+                padding: 10px;
+            }
+
+            .hero-cta .btn {
+                font-size: 1rem;
+            }
+
+            .ribbon-content .list-inline {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .ribbon-content .list-inline-item {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .heading-mobile {
+            display: none;
         }
     </style>
 </head>
@@ -144,9 +216,11 @@
                                     </div>
                                 </div>
 
-                                <div class="my-3">
-                                    <h1 class="fw-bold-text text-white mt-3">Prediksi Risiko Kekurangan Energi
-                                        Kronis (KEK) <br>pada Wanita Usia Subur (WUS)</h1>
+                                <div class="my-3 hero-heading">
+                                    <h1 class="fw-bold-text text-white mt-3 heading-desktop">Prediksi Risiko Kekurangan
+                                        Energi Kronis (KEK) <br>pada Wanita Usia Subur (WUS)</h1>
+                                    <h3 class="fw-bold-text text-white mt-3 heading-mobile">Prediksi Risiko Kekurangan
+                                        Energi Kronis (KEK) <br>pada Wanita Usia Subur (WUS)</h3>
                                     <p class="mt-3 fs-15 fw-medium text-white">Menggunakan Indeks UMMI (Ukuran Menilai
                                         Malnutrisi Ibu)</p>
                                 </div>
@@ -179,7 +253,7 @@
                         <!-- Kolom Kanan -->
                         <div class="col-12 col-md-6 d-flex">
                             @if (Route::has('login'))
-                                <div class="text-center w-100 h-100 d-flex flex-column justify-content-center">
+                                <div class="text-center w-100 h-100 d-flex flex-column justify-content-center hero-cta">
                                     @auth
                                         @if (Auth::user()->isAdmin())
                                             <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-lg w-100 fs-4 mb-4">

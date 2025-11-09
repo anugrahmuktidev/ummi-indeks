@@ -17,7 +17,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url("{{ asset('assets/img/bgmainmain.png') }}");
+            background-image: url("{{ asset('assets/img/bgmain-desktop.png') }}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -37,6 +37,12 @@
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-image: url("{{ asset('assets/img/bgmain-mobile.png') }}");
+            }
         }
     </style>
 
