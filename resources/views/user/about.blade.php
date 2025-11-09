@@ -57,7 +57,7 @@
                                     <h6 class="text-uppercase text-muted mb-3">Peran Utama</h6>
                                     <ul class="list-group list-group-flush rounded-3 overflow-hidden">
                                         <li class="list-group-item">Riset & Validasi Indeks UMMI</li>
-                                        <li class="list-group-item">Pengembangan Modul Edukasi & Video</li>
+                                        <li class="list-group-item">Pengembangan Modul Edukasi</li>
                                         <li class="list-group-item">Implementasi Sistem & Infrastruktur</li>
                                     </ul>
                                 </div>

@@ -61,15 +61,10 @@
         }
 
         h1 {
-            font-size: 2rem;
-            /* Memperbesar ukuran font h1 */
-            font-weight: bold;
-        }
-
-        h3 {
             font-size: 1.4rem;
             /* Memperbesar ukuran font h1 */
             font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
         @media (max-width: 768px) {
@@ -83,14 +78,13 @@
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 576px) {
             h1 {
-                font-size: 1.75rem;
-                /* Ukuran font lebih besar untuk layar kecil */
+                font-size: 1.4rem;
             }
 
             .fs-15 {
@@ -122,39 +116,69 @@
 
         .card-logo {
             background-color: white;
-            /* Card putih */
             border-radius: 40px;
-            /* Radius 20px */
             padding: 15px;
-            /* Padding untuk ruang di dalam card */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Sedikit bayangan untuk efek card */
-            max-width: 720px;
-            /* Batasi lebar maksimal card */
+            max-width: 820px;
             margin: 0 auto;
-            /* Buat card tetap di tengah */
             text-align: center;
-            /* Agar logo tetap sejajar di tengah */
         }
 
         .row-logo {
             display: flex;
-            /* Flexbox untuk mengatur baris */
-            justify-content: space-around;
-            /* Logo disebar rata secara horizontal */
-            flex-wrap: nowrap;
-            /* Jangan membiarkan logo turun ke baris baru */
-            gap: 10px;
-            /* Jarak antar logo */
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo-col {
             display: flex;
-            /* Flexbox di setiap kolom */
             justify-content: center;
-            /* Meratakan logo di tengah */
             align-items: center;
-            /* Meratakan logo secara vertikal */
+            flex: 1 1 150px;
+            max-width: 170px;
+        }
+
+        @media (max-width: 768px) {
+            .row-logo {
+                gap: 0;
+            }
+
+            .row-logo .row {
+                --bs-gutter-x: 0;
+                --bs-gutter-y: 0;
+            }
+
+            .row-logo .logo-col {
+                flex: 0 0 32%;
+                max-width: 32%;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+
+            .card-logo {
+                padding: 6px 4px;
+            }
+
+            .logo-size {
+                max-height: 48px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .row-logo .logo-col {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+
+            .card-logo {
+                border-radius: 24px;
+                padding: 6px 4px;
+            }
+
+            .logo-size {
+                max-height: 44px;
+            }
         }
     </style>
 
@@ -165,19 +189,19 @@
         <div class="auth-page-content">
             <div class="container">
                 <div class="row-logo">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
                         <div class="text-center text-white-50">
                             <div class="card-logo">
-                                <div class="row justify-content-center">
-                                    <div class="col-3 col-md-2 logo-col">
+                                <div class="row g-2 justify-content-center align-items-center">
+                                    <div class="col-4 col-sm-3 col-md-2 col-xl-2 logo-col">
                                         <img src="{{ asset('assets/img/kemendikbud.png') }}" alt=""
                                             class="img-fluid logo-size">
                                     </div>
-                                    <div class="col-3 col-md-2 logo-col">
+                                    <div class="col-4 col-sm-3 col-md-2 col-xl-2 logo-col">
                                         <img src="{{ asset('assets/img/logo-unja.png') }}" alt=""
                                             class="img-fluid logo-size">
                                     </div>
-                                    <div class="col-6 col-md-4 logo-col">
+                                    <div class="col-8 col-sm-4 col-md-3 col-xl-3 logo-col">
                                         <img src="{{ asset('assets/img/dikti-saintek2.png') }}" alt=""
                                             class="img-fluid logo-size">
                                     </div>
@@ -188,9 +212,9 @@
 
 
                             <div class="my-3">
-                                <h1 class="fw-bold-text text-white mt-4">Prediksi Risiko Kekurangan Energi
-                                    Kronis (KEK) <br>pada Wanita Usia Subur (WUS)</h1>
-                                <p class="fs-15 fw-medium text-white">Menggunakan Indeks UMMI (Ukuran Menilai
+                                <h3 class="fw-bold-text text-white mt-4">Prediksi Risiko Kekurangan Energi
+                                    Kronis (KEK) <br>pada Wanita Usia Subur (WUS)</h3>
+                            <p class="fs-15 fw-medium text-white">Menggunakan Indeks UMMI (Ukuran Menilai
                                     Malnutrisi Ibu)</p>
                             </div>
                         </div>

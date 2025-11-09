@@ -1,9 +1,28 @@
 @extends('layouts.basic')
 
 @section('content')
+    <style>
+        .login-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+            backdrop-filter: blur(8px);
+        }
+
+        @media (max-width: 576px) {
+            .login-card {
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 20px;
+            }
+
+            .login-card .card-body {
+                padding: 1.75rem;
+            }
+        }
+    </style>
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6 col-xl-5">
-            <div class="card mt-4 card-bg-fill">
+            <div class="card mt-4 card-bg-fill login-card">
                 <div class="card-body p-4">
                     <div class="text-center mt-2">
                         <h5 class="text-primary">Selamat Datang Kembali !</h5>

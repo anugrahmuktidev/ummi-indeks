@@ -44,6 +44,14 @@
             z-index: 1;
         }
 
+        .heading-desktop {
+            display: block;
+        }
+
+        .heading-mobile {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .nft-heros {
                 background-image: url("{{ asset('assets/img/bgmain-mobile.png') }}");
@@ -66,6 +74,30 @@
 
             .heading-mobile {
                 display: block;
+            }
+
+            .row-logo {
+                gap: 0;
+            }
+
+            .row-logo .row {
+                --bs-gutter-x: 0;
+                --bs-gutter-y: 0;
+            }
+
+            .row-logo .logo-col {
+                flex: 0 0 32%;
+                max-width: 32%;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+
+            .card-logo {
+                padding: 6px 4px;
+            }
+
+            .logo-size {
+                max-height: 48px;
             }
         }
 
@@ -117,10 +149,6 @@
             white-space: normal;
         }
 
-        .heading-desktop {
-            display: block;
-        }
-
         @media (min-width: 992px) {
             .row-logo {
                 justify-content: space-around;
@@ -143,22 +171,18 @@
         }
 
         @media (max-width: 576px) {
-            .row-logo {
-                gap: 12px;
-            }
-
             .logo-col {
-                flex: 1 1 45%;
-                max-width: 45%;
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
             }
 
             .logo-size {
-                max-height: 50px;
+                max-height: 46px;
             }
 
             .card-logo {
-                border-radius: 24px;
-                padding: 10px;
+                border-radius: 20px;
+                padding: 6px 4px;
             }
 
             .hero-cta .btn {
@@ -176,10 +200,6 @@
                 width: 100%;
             }
         }
-
-        .heading-mobile {
-            display: none;
-        }
     </style>
 </head>
 
@@ -193,26 +213,22 @@
             <div class="auth-page-content">
                 <div class="container">
                     <div class="row-logo">
-                        <div class="col-lg-12">
+                        <div class="col-lg-8">
                             <div class="text-center text-white-50">
                                 <div class="card-logo">
-                                    <div class="row justify-content-center">
-                                        <div class="col-3 col-md-2 logo-col">
+                                    <div class="row g-2 justify-content-center align-items-center">
+                                        <div class="col-4 col-sm-3 col-md-2 col-xl-2 logo-col">
                                             <img src="{{ asset('assets/img/kemendikbud.png') }}" alt=""
                                                 class="img-fluid logo-size">
                                         </div>
-                                        <div class="col-3 col-md-2 logo-col">
+                                        <div class="col-4 col-sm-3 col-md-2 col-xl-2 logo-col">
                                             <img src="{{ asset('assets/img/logo-unja.png') }}" alt=""
                                                 class="img-fluid logo-size">
                                         </div>
-                                        <div class="col-6 col-md-4 logo-col">
+                                        <div class="col-8 col-sm-4 col-md-3 col-xl-3 logo-col">
                                             <img src="{{ asset('assets/img/dikti-saintek2.png') }}" alt=""
                                                 class="img-fluid logo-size">
                                         </div>
-                                        {{-- <div class="col-3 col-md-2">
-                                            <img src="{{ asset('assets/img/kampus-merdeka.png') }}" alt=""
-                                                class="img-fluid logo-size">
-                                        </div> --}}
                                     </div>
                                 </div>
 
@@ -231,7 +247,7 @@
 
                     <div class="row align-items-stretch">
                         <!-- Kolom Kiri -->
-                        <div class="col-12 col-md-6 d-flex mb-1 mb-md-0">
+                        <div class="col-12 col-md-6 d-flex mb-3 mb-md-0">
                             <div class="card ribbon-box border shadow-none mb-lg-0 w-100 h-100">
                                 <div class="card-body">
                                     <div class="ribbon ribbon-success round-shape fs-4 fw-medium">
