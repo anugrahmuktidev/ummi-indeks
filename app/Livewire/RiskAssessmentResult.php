@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\UserRiskAssessment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class RiskAssessmentResult extends Component
@@ -90,6 +91,7 @@ class RiskAssessmentResult extends Component
     public ?string $kategori = null;
     public array $factors = [];
     public bool $canProceedToPosttest = false;
+    public bool $showHomeButton = false;
 
     public function mount(): void
     {
@@ -115,6 +117,13 @@ class RiskAssessmentResult extends Component
         $this->factors = $this->formatFactors($log['perFaktor']);
 
         $this->canProceedToPosttest = ! $user->has_completed_posttest;
+
+        $referer = request()->headers->get('referer');
+        $homeUrl = route('home');
+        $fromQuery = request()->boolean('from_home');
+        $refererFromHome = $referer ? Str::startsWith($referer, $homeUrl) : false;
+
+        $this->showHomeButton = $fromQuery || $refererFromHome;
     }
 
     public function proceed(): void

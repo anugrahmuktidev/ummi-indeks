@@ -84,12 +84,14 @@
                     @endif
                 </div>
 
-                <div class="d-flex justify-content-end mt-3">
-                    <a href="{{ route('home') }}" class="btn btn-outline-primary w-100 w-md-auto">
-                        <i class="ri-home-4-line me-1"></i>
-                        Kembali ke Beranda
-                    </a>
-                </div>
+                @if ($showHomeButton)
+                    <div class="d-flex justify-content-end mt-3">
+                        <a href="{{ route('home') }}" class="btn btn-outline-primary w-100 w-md-auto">
+                            <i class="ri-home-4-line me-1"></i>
+                            Kembali ke Beranda
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

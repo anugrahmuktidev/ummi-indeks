@@ -280,7 +280,7 @@
                                         @endif
                                     @else
                                         @if (Route::has('register'))
-                                            <a href="{{ route('register') }}" class="btn btn-success btn-lg w-100 fs-4 mb-3"><i
+                                            <a href="{{ route('register') }}" class="btn btn-success btn-lg w-100 fs-4"><i
                                                     class="ri-user-add-line me-2"></i>Daftar</a>
                                         @endif
                                         <a href="{{ route('login') }}" class="btn btn-warning btn-lg w-100 fs-4"><i
@@ -288,9 +288,11 @@
 
                                     @endauth
                                     {{-- Tombol petunjuk penggunaan disembunyikan --}}
-                                    {{-- <a href="{{ asset('petunjuk-penggunaan-kecapi.pdf') }}" target="_blank"
-                                        class="btn btn-primary btn-lg w-100 fs-4"><i
-                                            class="ri-question-answer-line me-2"></i>Petunjuk Penggunaan</a> --}}
+                                    <a href="{{ asset('petunjuk-penggunaan-prediksikek.pdf') }}" target="_blank"
+                                        rel="noopener"
+                                        class="btn btn-primary btn-lg w-100 fs-4 material-shadow-none">
+                                        <i class="ri-question-answer-line me-2"></i>Petunjuk Penggunaan
+                                    </a>
                                 </div>
                             @endif
                         </div>
