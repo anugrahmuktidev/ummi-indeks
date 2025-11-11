@@ -5,11 +5,17 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SoalResource\Pages;
 use App\Filament\Resources\SoalResource\RelationManagers\JawabansRelationManager;
 use App\Models\Soal;
+use App\Rules\HasCorrectAnswer;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextArea;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
@@ -18,6 +24,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\Rule;
 
 class SoalResource extends Resource
 {
@@ -29,23 +36,77 @@ class SoalResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form->schema([
-            TextInput::make('nomor_soal')
-                ->numeric()
-                ->minValue(1)
-                ->required()
-                ->unique(ignoreRecord: true),
-            TextArea::make('soal')
-                ->rows(4)
-                ->required(),
-            Select::make('jenis_soal')
-                ->required()
-                ->options([
-                    'Pre Test' => 'Pre Test',
-                    'Post Test' => 'Post Test',
-                    'Skrining' => 'Skrining',
-                ])->native(false),
-        ])->columns(1);
+        return $form
+            ->schema([
+                Section::make('Informasi Soal')
+                    ->schema([
+                        Select::make('jenis_soal')
+                            ->label('Jenis Soal')
+                            ->options([
+                                'Pre Test' => 'Pre Test',
+                                'Post Test' => 'Post Test',
+                            ])
+                            ->live()
+                            ->required()
+                            ->native(false)
+                            ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                if (! $state) {
+                                    return;
+                                }
+
+                                $set('nomor_soal', Soal::getNextNomorSoal($state));
+                            }),
+                        TextInput::make('nomor_soal')
+                            ->label('Nomor Soal')
+                            ->numeric()
+                            ->minValue(1)
+                            ->helperText('Biarkan kosong untuk penomoran otomatis berdasarkan jenis soal.')
+                            ->rule(function (Get $get, ?Soal $record) {
+                                $jenis = $get('jenis_soal');
+
+                                if (! $jenis) {
+                                    return null;
+                                }
+
+                                return Rule::unique('soal', 'nomor_soal')
+                                    ->where('jenis_soal', $jenis)
+                                    ->ignore($record?->getKey());
+                            }),
+                        Textarea::make('soal')
+                            ->label('Pertanyaan')
+                            ->rows(4)
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2),
+                Section::make('Pilihan Jawaban')
+                    ->description('Lengkapi minimal dua pilihan dan tandai kunci jawaban.')
+                    ->schema([
+                        Repeater::make('jawaban')
+                            ->relationship('jawaban')
+                            ->label('Pilihan Jawaban')
+                            ->minItems(2)
+                            ->reorderable()
+                            ->createItemButtonLabel('Tambah Pilihan')
+                            ->schema([
+                                Textarea::make('jawaban')
+                                    ->label('Teks Jawaban')
+                                    ->rows(3)
+                                    ->required()
+                                    ->columnSpan(2),
+                                TextInput::make('poin_soal')
+                                    ->label('Poin')
+                                    ->numeric()
+                                    ->default(0)
+                                    ->minValue(0),
+                                Checkbox::make('kunci_jawaban')
+                                    ->label('Kunci Jawaban')
+                                    ->columnSpan(1),
+                            ])
+                            ->columns(3)
+                            ->rules(['array', new HasCorrectAnswer()]),
+                    ]),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -63,7 +124,6 @@ class SoalResource extends Resource
                     ->colors([
                         'warning' => 'Pre Test',
                         'success' => 'Post Test',
-                        'primary' => 'Skrining',
                     ]),
                 TextColumn::make('jawaban_count')
                     ->label('Jumlah Jawaban')
@@ -78,7 +138,6 @@ class SoalResource extends Resource
                     ->options([
                         'Pre Test' => 'Pre Test',
                         'Post Test' => 'Post Test',
-                        'Skrining' => 'Skrining',
                     ]),
             ])
             ->groups([
